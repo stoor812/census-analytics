@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw
+    database: CENSUS_DB
+    schema: RAW
+    tables:
+      - name: CENSUS_PROFILES
