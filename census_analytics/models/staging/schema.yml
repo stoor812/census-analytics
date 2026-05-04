@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_census_profiles
+    description: "One row per federal electoral district (FED) with key 2021 Census characteristics pivoted from the long-format raw source. Filtered to geo_level = 'Federal electoral district (2013 Representation Order)'."
+    columns:
+      - name: dguid
+        description: "Dissemination Geography Unique Identifier — the unique key for each federal electoral district."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: geo_name
+        description: "Human-readable name of the federal electoral district (e.g., 'Calgary Centre')."
+        data_tests:
+          - not_null
+
+      - name: geo_level
+        description: "Geographic level of the row. Always 'Federal electoral district (2013 Representation Order)' in this model."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Federal electoral district (2013 Representation Order)']
+
+      - name: population_2021
+        description: "Total population in the riding as of the 2021 Census."
+        data_tests:
+          - not_null
+
+      - name: median_age
+        description: "Median age of the population in the riding."
+
+      - name: median_total_income_2020
+        description: "Median total income in 2020 ($) for income recipients aged 15+ in private households."

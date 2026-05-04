@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: riding_demographics
+    description: "One row per federal electoral district with the headline demographic, income, housing, and education metrics, plus derived percentages (senior share, child share, ownership rate, bachelor's+ rate). Primary mart for riding-level reporting."
+    columns:
+      - name: dguid
+        description: "Dissemination Geography Unique Identifier — unique key for each riding."
+        data_tests:
+          - unique
+          - not_null
+
+  - name: riding_comparison
+    description: "One row per riding with cross-riding RANK() columns on key metrics (income, dwelling value, education, senior share, shelter-cost burden). Powers ranked comparisons in Power BI."
+    columns:
+      - name: dguid
+        description: "Dissemination Geography Unique Identifier — unique key for each riding."
+        data_tests:
+          - unique
+          - not_null
+
+  - name: province_benchmarks
+    description: "One row per province (and territory) with the same key metrics as riding_demographics, used to benchmark a riding's values against its provincial baseline."
+
+  - name: income_distribution
+    description: "One row per riding with total-income bracket counts (under $10k through $150k+) pivoted from the source, plus the share of income recipients in each broader band."
+
+  - name: housing_analysis
+    description: "One row per riding with detailed housing metrics — tenure, suitability, dwelling condition, shelter-cost burden, and owner/tenant cost detail — with derived percentages."
